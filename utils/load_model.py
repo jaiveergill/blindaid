@@ -56,6 +56,7 @@ photo = extract_features(img_path, xception_model)
 img = Image.open(img_path)
 description = gen_desc(model, tokenizer, photo, MAX_LENGTH)
 
-def scene_desc(model, tokenizer, photo, max_length):
-  description = gen_desc(model, tokenizer, photo, max_length)
-  return description.replace("the", "a").replace("start", "").replace("end", "")
+def scene_desc(model, tokenizer, img_path, max_length=32):
+    photo = extract_features(img_path, xception_model)
+    description = gen_desc(model, tokenizer, photo, max_length)
+    return description.replace("the", "a").replace("start", "").replace("end", "")
